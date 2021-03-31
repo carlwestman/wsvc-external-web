@@ -1,1 +1,28 @@
 @import '~antd/dist/antd.css';
+
+.ant-menu.ant-menu-light .customclass {
+  color: #dfdfdf; /*Overriden property*/
+}
+
+.ant-menu.ant-menu-light .ant-menu-item-selected.customclass {
+  color: #0f7f00; /*Overriden property*/
+  border-bottom: 2px solid #0f7f00;
+  background-color: black;
+}
+
+.ant-menu.ant-menu-light .ant-menu-item-active.customclass {
+  color: #0f7f00; /*Overriden property*/
+  border-bottom: 2px solid #0f7f00;
+}
+
+p .customclass :hover {
+  color: #0f7f00; /*Overriden property*/
+}
+
+/* ant-menu-item ant-menu-item-only-child customclass
+ant-menu-item-active ant-menu-item-selected
+
+ant-menu-item ant-menu-item-only-child customclass
+ant-menu-item-active ant-menu-item-selected
+ant-menu ant-menu-light ant-menu-root ant-menu-horizontal
+ant-menu ant-menu-light ant-menu-root ant-menu-intline */
