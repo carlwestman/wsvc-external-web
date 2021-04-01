@@ -60,7 +60,7 @@ class About extends React.Component {
                 </p >
                 <br />
                 <p style={{ color: "white" }}>
-                    The portfolio will over the next few years be shifted into a strategy focused on the areas of sustainable energy production, storage and distribution.
+                    The portfolio will over the next few years be shifted into a strategy focused on the areas of sustainable energy production, storage and distribution, basic materials and technology needed to transition to sustainable energy.
 
             </p >
             </ div >
