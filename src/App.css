@@ -19,6 +19,17 @@ p .customclass :hover {
   color: #0f7f00; /*Overriden property*/
 }
 
+[title="Name"] {
+  color: white !important;
+}
+
+[title="Email"] {
+  color: white !important;
+}
+
+[title="Message"] {
+  color: white !important;
+}
 /* ant-menu-item ant-menu-item-only-child customclass
 ant-menu-item-active ant-menu-item-selected
 
