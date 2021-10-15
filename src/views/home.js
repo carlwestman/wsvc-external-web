@@ -1,6 +1,6 @@
 import React from 'react'
-import { Layout, Menu, Card, Image, Row, Divider, Button, Form, Input, InputNumber } from 'antd';
-import { LinkOutlined } from '@ant-design/icons';
+import { Layout, Menu, Card, Image, Row, Divider, Button, Form, Input, Drawer } from 'antd';
+import { LinkOutlined, MenuOutlined } from '@ant-design/icons';
 const sgMail = require('@sendgrid/mail')
 const { Header, Content } = Layout;
 
@@ -50,7 +50,7 @@ class Contact extends React.Component {
                     <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
                         <Button type="primary" htmlType="submit" style={{ backgroundColor: "#0f7f00", borderColor: "#0f7f00" }}>
                             Submit
-                            </Button>
+                        </Button>
                     </Form.Item>
                 </Form>
                 <Divider style={{ borderColor: "#0f7f00", color: "white" }}></Divider>
@@ -169,7 +169,7 @@ class About extends React.Component {
                 <p style={{ color: "white" }}>
                     The portfolio will over the next few years be shifted into a strategy focused on the areas of sustainable energy production, storage and distribution, basic materials and technology needed to transition to sustainable energy.
 
-            </p >
+                </p >
                 <Divider style={{ borderColor: "#0f7f00", color: "white" }}></Divider>
 
             </ div >
@@ -195,7 +195,8 @@ class Start extends React.Component {
 
 export default class Main extends React.Component {
     state = {
-        currentViewKey: "start"
+        currentViewKey: "start",
+        inlineMenuVisible: false
     }
 
     componentDidMount() {
@@ -223,10 +224,29 @@ export default class Main extends React.Component {
         const viewsList = {
             start: { component: <Start />, color: 'black' },
             about: { component: <About />, color: 'black' },
-            portfolio: { component: <Portfolio />, color: 'black' },
+            // portfolio: { component: <Portfolio />, color: 'black' },
             contact: { component: <Contact />, color: 'black' },
         }
-        const { currentViewKey, menuMode } = this.state
+        const menuItems = [
+            {
+                display: "Start",
+                key: "start"
+            },
+            {
+                display: "About",
+                key: "about"
+            },
+            // {
+            //     display: "Portfolio",
+            //     key: "portfolio"
+            // },
+            {
+                display: "Contact",
+                key: "contact"
+            }
+        ]
+
+        const { currentViewKey, menuMode, inlineMenuVisible } = this.state
         const currentView = viewsList[currentViewKey]
         return (
             <Layout style={{ minHeight: "100vh" }}>
@@ -239,10 +259,16 @@ export default class Main extends React.Component {
                         }}
                         onClick={e => this.setViewKey(e)}
                         selectedKeys={currentViewKey}>
-                        <Menu.Item key="start" className="customclass">Start</Menu.Item>
-                        <Menu.Item key="about" className="customclass">About</Menu.Item>
-                        <Menu.Item key="portfolio" className="customclass">Portfolio</Menu.Item>
-                        <Menu.Item key="contact" className="customclass">Contact</Menu.Item>
+                        {menuMode === "horizontal" ?
+                            <>
+                                <Menu.Item key="start" className="customclass">Start</Menu.Item>
+                                <Menu.Item key="about" className="customclass">About</Menu.Item>
+                                {/* <Menu.Item key="portfolio" className="customclass">Portfolio</Menu.Item> */}
+                                <Menu.Item key="contact" className="customclass">Contact</Menu.Item>
+                            </> :
+                            <MenuOutlined style={{ color: "#0f7f00" }} />
+                        }
+
                     </Menu>
                 </Header>
                 <Content style={{
@@ -255,6 +281,7 @@ export default class Main extends React.Component {
                 }}>
                     {currentView.component}
                 </Content>
+
             </Layout>
 
         )
